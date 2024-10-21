@@ -29,7 +29,29 @@ const generatePassword = (length, options) => {
 };
 
 // TODO: Add event listener to the button to call generatePassword and display the output
-
+document.getElementById('generateBtn').addEventListener('click', () => {
+    const length = parseInt(document.getElementById('length').value, 10);
+    const options = {
+        includeUppercase: document.getElementById('includeUppercase').checked,
+        includeLowercase: document.getElementById('includeLowercase').checked,
+        includeNumbers: document.getElementById('includeNumbers').checked,
+        includeSpecialChars: document.getElementById('includeSpecialChars').checked,
+    };
+    
+    const password = generatePassword(length, options);
+    document.getElementById('passwordOutput').textContent = password;
+});
 
 // BONUS: Implement the copy to clipboard functionality
-
+document.getElementById('copyBtn').addEventListener('click', () => {
+    const passwordOutput = document.getElementById('passwordOutput').textContent;
+    if (passwordOutput) {
+        navigator.clipboard.writeText(passwordOutput).then(() => {
+            alert('Password copied to clipboard!');
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+    } else {
+        alert('No password to copy!');
+    }
+});
