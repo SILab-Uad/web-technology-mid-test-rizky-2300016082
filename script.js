@@ -27,8 +27,4 @@ const generatePassword = (length, options) => {
 // Cek apakah module.exports tersedia (Node.js), jika ya, gunakan itu
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = { generatePassword };
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 34188addb54261c13a5373f30d483f9e7f69f11e
